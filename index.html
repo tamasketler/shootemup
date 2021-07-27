@@ -22,7 +22,7 @@
         //Aliases
         let Application = PIXI.Application,
             Container = PIXI.Container,
-            loader = PIXI.loader,
+            loader = PIXI.Loader.shared,
             resources = PIXI.loader.resources,
             TextureCache = PIXI.utils.TextureCache,
             Sprite = PIXI.Sprite,
@@ -74,7 +74,7 @@
                 { view: app.view }
             );
 
-            Loader.shared
+            loader
                 .add(splashImage)
                 .load(loadSplash);
 
