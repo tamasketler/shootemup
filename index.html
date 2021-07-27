@@ -27,6 +27,13 @@
                 384,
                 { view: document.getElementById("game-canvas") }
             );
+
+            var splashTexture = PIXI.Texture.fromImage("assets/splash.png");
+            splash = new PIXI.Sprite(splashTexture);
+            splash.position.x = 0;
+            splash.position.y = 0;
+
+            renderer.render(stage);
         }
     </script>
 </body>
