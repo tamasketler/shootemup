@@ -71,7 +71,9 @@
                     fadeSplash();
                 }
             })
-            loadMenu();
+            loader
+                .add(menuImage)
+                .load(loadMenu);
 
             //Start the game loop 
             //app.ticker.add(delta => gameLoop(delta));
