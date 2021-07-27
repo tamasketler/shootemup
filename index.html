@@ -38,6 +38,9 @@
             resolution: 1
         });
 
+        // Counters
+        let i = 0;
+
         function loadMenu() {
             menuBg = new Sprite(resources[menuImage].texture);
             menuBg.position.x = 0;
@@ -62,9 +65,8 @@
             splash.width = 800;
             splash.height = 600;
             app.stage.addChild(splash);
-
-            i = 0
-            app.ticker.add(() => {
+            
+            app.ticker.add(delta => {
                 if ( i < 2000 ) {
                     i += 1;
                 } else {
