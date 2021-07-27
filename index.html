@@ -16,8 +16,6 @@
 <script src="pixi/pixi.min.js"></script>
 
 <body onload="init();">
-    <div class="container" align="center">
-    </div>
     <script>
         //Assets
         let splashImage = "assets/splash.png";
@@ -68,7 +66,7 @@
         }
 
         function init() {
-            document.body.firstChild.appendChild(app.view);
+            document.body.appendChild(app.view);
 
             stage = new PIXI.Container();
             renderer = PIXI.autoDetectRenderer(
