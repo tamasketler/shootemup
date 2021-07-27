@@ -55,8 +55,9 @@
             splash.position.y = 0;
             splash.alpha = 1;
             stage.addChild(splash);
+            renderer.render(stage);
 
-            //requestAnimationFrame(fadeSplash);
+            requestAnimationFrame(fadeSplash);
             loadMenu();
 
             //Start the game loop 
