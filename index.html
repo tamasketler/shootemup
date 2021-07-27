@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Retro Shoot'em up game</title>
@@ -13,28 +14,76 @@
     </style>
 </head>
 <script src="pixi/pixi.min.js"></script>
+
 <body onload="init();">
-    <div align="center">
-        <canvas id="game-canvas" width="800" height="600"></canvas>
+    <div class="container" align="center">
     </div>
     <script>
+        //Assets
+        let splashImage = "assets/splash.png";
+        //Aliases
+        let Application = PIXI.Application,
+            Container = PIXI.Container,
+            loader = PIXI.loader,
+            resources = PIXI.loader.resources,
+            TextureCache = PIXI.utils.TextureCache,
+            Sprite = PIXI.Sprite,
+            Rectangle = PIXI.Rectangle;
+
+        //Create a Pixi Application
+        let app = new Application({
+            width: 800,
+            height: 600,
+            antialias: true,
+            transparent: false,
+            resolution: 1
+        });
+
+        function loadMenu() {
+
+        }
+
+        function fadeSplash() {
+            if (splash.alpha > 0) {
+                splash.alpha -= 0.1;
+            } else {
+                stage.visible = false;
+            }
+        }
+
+        function loadSplash() {
+            splash = new Sprite(resources[splashImage].texture);
+            splash.position.x = 0;
+            splash.position.y = 0;
+            stage.addChild(splash);
+
+            i = 0;
+            while ( i < 2000) {}
+            requestAnimationFrame(fadeSplash);
+            loadMenu();
+
+            //Start the game loop 
+            //app.ticker.add(delta => gameLoop(delta));
+
+        }
+
         function init() {
-            PIXI.utils.sayHello("Hi");
+            document.body.firstChild.appendChild(app.view);
 
             stage = new PIXI.Container();
             renderer = PIXI.autoDetectRenderer(
-                512,
-                384,
-                { view: document.getElementById("game-canvas") }
+                800,
+                600,
+                { view: app.view }
             );
 
-            var splashTexture = PIXI.Texture.fromImage("assets/splash.png");
-            splash = new PIXI.Sprite(splashTexture);
-            splash.position.x = 0;
-            splash.position.y = 0;
+            loader
+                .add(splashImage)
+                .load(loadSplash);
 
             renderer.render(stage);
         }
     </script>
 </body>
+
 </html>
