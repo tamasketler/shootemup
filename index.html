@@ -1,16 +1,33 @@
 <html>
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>Retro Shoot'em up game</title>
     <style>
-        body { background-color: #000000; }
-        canvas { background-color: #222222; }
-      </style>
-  </head>
-  <script src="pixi/pixi.min.js"></script>
-  <body>
+        body {
+            background-color: #ffffff;
+        }
+
+        canvas {
+            background-color: #222222;
+        }
+    </style>
+</head>
+<script src="pixi/pixi.min.js"></script>
+<body onload="init();">
     <div align="center">
         <canvas id="game-canvas" width="800" height="600"></canvas>
-      </div>
-  </body>
+    </div>
+    <script>
+        function init() {
+            PIXI.utils.sayHello("Hi");
+
+            stage = new PIXI.Container();
+            renderer = PIXI.autoDetectRenderer(
+                512,
+                384,
+                { view: document.getElementById("game-canvas") }
+            );
+        }
+    </script>
+</body>
 </html>
