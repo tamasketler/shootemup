@@ -43,7 +43,7 @@
 
         function fadeSplash() {
             if (splash.alpha > 0) {
-                splash.alpha -= 0.1;
+                splash.alpha -= 0.01;
             } else {
                 stage.visible = false;
             }
@@ -74,7 +74,7 @@
                 { view: app.view }
             );
 
-            loader
+            Loader.shared
                 .add(splashImage)
                 .load(loadSplash);
 
