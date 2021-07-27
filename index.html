@@ -47,7 +47,6 @@
             } else {
                 stage.visible = false;
             }
-            renderer.render(app.stage);
         }
 
         function loadSplash() {
@@ -57,7 +56,6 @@
             splash.width = 800;
             splash.height = 600;
             app.stage.addChild(splash);
-            renderer.render(app.stage);
 
             requestAnimationFrame(fadeSplash);
             loadMenu();
@@ -70,17 +68,9 @@
         function init() {
             document.body.appendChild(app.view);
 
-            renderer = PIXI.autoDetectRenderer(
-                800,
-                600,
-                { view: app.view }
-            );
-
             loader
                 .add(splashImage)
                 .load(loadSplash);
-
-            renderer.render(app.stage);
         }
     </script>
 </body>
