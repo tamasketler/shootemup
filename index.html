@@ -47,6 +47,7 @@
             } else {
                 stage.visible = false;
             }
+            renderer.render(stage);
         }
 
         function loadSplash() {
@@ -68,7 +69,6 @@
         function init() {
             document.body.appendChild(app.view);
 
-            //stage = new PIXI.Container();
             renderer = PIXI.autoDetectRenderer(
                 800,
                 600,
