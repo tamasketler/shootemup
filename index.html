@@ -54,7 +54,7 @@
             splash.position.x = 0;
             splash.position.y = 0;
             splash.alpha = 1;
-            stage.addChild(splash);
+            app.stage.addChild(splash);
             renderer.render(stage);
 
             requestAnimationFrame(fadeSplash);
@@ -68,7 +68,7 @@
         function init() {
             document.body.appendChild(app.view);
 
-            stage = new PIXI.Container();
+            //stage = new PIXI.Container();
             renderer = PIXI.autoDetectRenderer(
                 800,
                 600,
