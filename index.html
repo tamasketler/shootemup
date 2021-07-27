@@ -19,6 +19,7 @@
     <script>
         //Assets
         let splashImage = "assets/splash.png";
+        let menuImage = "assets/menubg.jpg";
         //Aliases
         let Application = PIXI.Application,
             Container = PIXI.Container,
@@ -38,7 +39,12 @@
         });
 
         function loadMenu() {
-
+            menuBg = new Sprite(resources[menuImage].texture);
+            menuBg.position.x = 0;
+            menuBg.position.y = 0;
+            menuBg.width = 800;
+            menuBg.height = 600;
+            app.stage.addChild(menuBg);
         }
 
         function fadeSplash() {
@@ -57,7 +63,14 @@
             splash.height = 600;
             app.stage.addChild(splash);
 
-            requestAnimationFrame(fadeSplash);
+            i = 0
+            app.ticker.add(() => {
+                if ( i < 2000 ) {
+                    i += 1;
+                } else {
+                    fadeSplash();
+                }
+            })
             loadMenu();
 
             //Start the game loop 
