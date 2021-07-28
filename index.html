@@ -41,6 +41,10 @@
         // Counters
         let i = 0;
 
+        function render() {
+            app.renderer.render(app.stage);
+        }
+
         function loadMenu() {
             menuBg = new Sprite(resources[menuImage].texture);
             menuBg.position.x = 0;
@@ -59,6 +63,18 @@
             requestAnimationFrame(fadeSplash);
         }
 
+        function animateFade() {
+            if ( i < 2000 ) {
+                    i += 1;
+                } else {
+                    app.ticker.remove(delta => animateFade());
+                    fadeSplash();
+                    loader
+                .add(menuImage)
+                .load(loadMenu);
+            }
+        }
+
         function loadSplash() {
             splash = new Sprite(resources[splashImage].texture);
             splash.position.x = 0;
@@ -67,16 +83,7 @@
             splash.height = 600;
             app.stage.addChild(splash);
             
-            app.ticker.add(delta => {
-                if ( i < 12000 ) {
-                    i += 1;
-                } else {
-                    fadeSplash();
-                }
-            })
-            loader
-                .add(menuImage)
-                .load(loadMenu);
+            app.ticker.add(delta => animateFade());
 
             //Start the game loop 
             //app.ticker.add(delta => gameLoop(delta));
@@ -85,6 +92,8 @@
 
         function init() {
             document.body.appendChild(app.view);
+
+            app.ticker.add(delta => render());
 
             loader
                 .add(splashImage)
